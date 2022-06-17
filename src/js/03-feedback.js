@@ -13,7 +13,10 @@ const formData = {
     email: email.value,
 };
 
-const formMove = (e) => { e.preventDefault(); console.log('отправляем форму'); e.currentTarget.reset(); localStorage.removeItem(KEY_STORAGE); console.log(formData) };
+const formMove = (e) => {
+    e.preventDefault(); console.log('отправляем форму'); console.log(JSON.parse(localStorage.getItem(KEY_STORAGE)));
+    e.currentTarget.reset(); localStorage.removeItem(KEY_STORAGE);
+};
 form.addEventListener('submit', formMove);
 
 form.addEventListener('input', throttle((e) => {
