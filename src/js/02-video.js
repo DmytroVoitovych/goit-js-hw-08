@@ -14,7 +14,10 @@ const onPlay = function (data) {
 const optimizedOnPlay = throttle(onPlay, 1000); 
 player.on('timeupdate', optimizedOnPlay);
 // гайд который мне помог https://habr.com/ru/post/647359/
-player.setCurrentTime(localStorage.getItem(VIDEO_STORAGE_KEY)).then(function (seconds) {  // получаем данные с хранилища
+
+const setTime = localStorage.getItem(VIDEO_STORAGE_KEY);
+if (setTime) {//правка касаемо записаного времени
+    player.setCurrentTime(setTime).then(function (seconds) {  // получаем данные с хранилища
         // seconds = the actual time that the player seeked to
     }).catch(function (error) {
         switch (error.name) {
@@ -27,6 +30,7 @@ player.setCurrentTime(localStorage.getItem(VIDEO_STORAGE_KEY)).then(function (se
                 break;
         }
     });
+}
 
 // ниже мои муки и попытки сделатть ДЗ)))))))))))))))))))
 //     import Player from '@vimeo/player';

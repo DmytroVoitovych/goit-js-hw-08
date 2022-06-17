@@ -14,7 +14,14 @@ const formData = {
 };
 
 const formMove = (e) => {
-    e.preventDefault(); console.log('отправляем форму'); console.log(JSON.parse(localStorage.getItem(KEY_STORAGE)));
+    e.preventDefault();
+    
+    if (formData.email === "" || formData.message === "") {// проверка на заполнение форми // в тз не было написано, что бы все поля были заполнены
+        return alert("Заполните все поля");
+    }
+    else {
+        console.log('отправляем форму'); console.log(JSON.parse(localStorage.getItem(KEY_STORAGE)));
+    }
     e.currentTarget.reset(); localStorage.removeItem(KEY_STORAGE);
 };
 form.addEventListener('submit', formMove);
