@@ -19,13 +19,13 @@ form.addEventListener('submit', formMove);
 form.addEventListener('input', throttle((e) => {
     
     
-     formData[e.target.name] = e.target.value; console.log(formData);
+     formData[e.target.name] = e.target.value; 
     // if(formData)
-    localStorage.setItem(KEY_STORAGE, JSON.stringify(formData)); console.log(localStorage);
+    localStorage.setItem(KEY_STORAGE, JSON.stringify(formData));
     
 }, 500));
 
-saveTextArea = () => {
+ const saveTextArea = () => {
     const saveMessage = JSON.parse(localStorage.getItem(KEY_STORAGE));
     
     if (saveMessage)
